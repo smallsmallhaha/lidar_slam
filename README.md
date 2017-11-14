@@ -52,3 +52,5 @@ roslaunch cartographer_ros demo_hokuyo.launch
 /home/whu/slam_ws/install/lib/cartographer_ros/cartographer_node -configuration_directory /home/whu/slam_ws/install/share/cartographer_ros/configuration_files -configuration_basename backpack_2d.lua echoes:=horizontal_laser_2d __name:=cartographer_node
 
 
+valgrind --tool=callgrind
+

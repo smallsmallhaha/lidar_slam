@@ -16,7 +16,7 @@
 
 <launch>  
 
-
+    <param name="/use_sim_time" value="false" />
     
   <node name="hokuyo0" pkg="hokuyo_node" type="hokuyo_node" > 
    <remap from="scan" to="horizontal_laser_2d" />
@@ -41,6 +41,7 @@
     <param name="max_ang"  value="2.356194490125"/>  
     <param name="frame_id"  value="vertical_left_laser_link"/>  
   </node>
+  
  
 
 <!--  <node pkg="xsens_node" type="xsens_node" name="xsens_node" >
@@ -48,7 +49,10 @@
   </node>-->
 
   <node pkg="rosbag" type="record" name="record" 
-  output="screen" args="-o /home/whu/data/whuplat/threelidar  /horizontal_laser_2d /vertical_right_laser_2d /vertical_left_laser_2d"/> 
+  output="screen" args="-o /home/whu/data/whuplat/threelidar/ /imu /horizontal_laser_2d /vertical_right_laser_2d /vertical_left_laser_2d"/> 
+  
+<!--    <node pkg="rosbag" type="record" name="record" 
+  output="screen" args="-o /home/whu/data/whuplat/lidar2IMU /imu /horizontal_laser_2d /vertical_left_laser_2d"/> -->
 
 
 
