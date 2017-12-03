@@ -16,7 +16,7 @@
 
 <launch>  
 
-    <param name="/use_sim_time" value="false" />
+  <param name="/use_sim_time" value="false" />
     
   <node name="hokuyo0" pkg="hokuyo_node" type="hokuyo_node" > 
    <remap from="scan" to="horizontal_laser_2d" />
@@ -49,12 +49,12 @@
   </node>-->
 
   <node pkg="rosbag" type="record" name="record" 
-  output="screen" args="-o /home/whu/data/whuplat/threelidar/ /imu /horizontal_laser_2d /vertical_right_laser_2d /vertical_left_laser_2d"/> 
+  output="screen" args="-o $(env ROS_DATA_DIR)/origin  /imu /horizontal_laser_2d /vertical_right_laser_2d /vertical_left_laser_2d"/> 
   
 <!--    <node pkg="rosbag" type="record" name="record" 
   output="screen" args="-o /home/whu/data/whuplat/lidar2IMU /imu /horizontal_laser_2d /vertical_left_laser_2d"/> -->
 
-
+ 
 
 </launch>
 

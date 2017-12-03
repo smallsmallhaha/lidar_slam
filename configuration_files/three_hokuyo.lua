@@ -45,4 +45,14 @@ TRAJECTORY_BUILDER_2D.min_range = 0.3
 TRAJECTORY_BUILDER_2D.max_range = 30.
 TRAJECTORY_BUILDER_2D.use_imu_data = false
 
+
+
+SPARSE_POSE_GRAPH.optimize_every_n_scans = 80
+TRAJECTORY_BUILDER_2D.submaps.num_range_data = 80
+TRAJECTORY_BUILDER_2D.use_online_correlative_scan_matching = true
+TRAJECTORY_BUILDER_2D.ceres_scan_matcher.translation_weight=10
+TRAJECTORY_BUILDER_2D.ceres_scan_matcher.rotation_weight=40
+
+
+
 return options
