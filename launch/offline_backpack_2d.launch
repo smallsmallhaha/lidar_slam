@@ -23,7 +23,7 @@
   <node name="cartographer_offline_node" pkg="cartographer_ros"
       type="cartographer_offline_node" args="
           -configuration_directory $(find lidar_slam)/configuration_files
-          -configuration_basename three_hokuyo.lua
+          -configuration_basename backpack_2d.lua
           -urdf_filename $(find lidar_slam)/urdf/three_hokuyo_ydy2.urdf
           -bag_filenames $(arg bag_filenames)"
       output="screen">

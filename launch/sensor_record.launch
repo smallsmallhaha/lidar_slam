@@ -48,7 +48,7 @@
 
   <node pkg="rosbag" type="record" name="record" 
   output="screen" 
-  args="-o $(env ROS_DATA_DIR)/lidar_slam/ /imu /horizontal_laser_2d /vertical_right_laser_2d /vertical_left_laser_2d"/>
+  args="--bz2 -o $(env ROS_DATA_DIR)/lidar_slam/ /imu /horizontal_laser_2d /vertical_right_laser_2d /vertical_left_laser_2d"/>
   
 </launch>
 

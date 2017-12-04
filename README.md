@@ -54,3 +54,9 @@ roslaunch cartographer_ros demo_hokuyo.launch
 
 valgrind --tool=callgrind
 
+
+-------------------------------------------   20171204 kekliu@qq.com
+参考cartographer_ros重新组织了文件,下面简单说明一下launch文件夹中各个文件的意思:
+sensor_record.launch  录制1个IMU和3个lidar的消息(请先自行打开IMU消息发布器,因为有的IMU需要预热才能得到准确测量结果)
+offline_backpack_2d.launch bag_filenames:=<bag_filenames>  离线播放.bag包,处理数据,输出.pbstream文件
+asserts_backpack_2d.launch bag_filenames:=<bag_filenames> pose_graph_filename:=<pose_graph_filename>  使用.bag和.pbstream文件重建点云
