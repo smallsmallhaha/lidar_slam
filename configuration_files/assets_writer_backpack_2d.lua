@@ -36,6 +36,7 @@ YZ_TRANSFORM =  {
 
 options = {
   tracking_frame = "base_link",
+  excluding_frame = "horizontal_laser_link",
   pipeline = {
     {
       action = "min_max_range_filter",

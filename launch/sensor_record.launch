@@ -23,7 +23,7 @@
     <param name="port" type="string" value="/dev/ttyACM1"/>  
     <param name="min_ang"  value="-2.356194490125"/>  
     <param name="max_ang"  value="2.356194490125"/>  
-    <param name="frame_id"  value="horizontal_laser_link"/>  
+    <param name="frame_id"  value="horizontal_laser_link"/>
   </node>
   
   <node name="hokuyo1" pkg="hokuyo_node" type="hokuyo_node" > 
@@ -41,21 +41,15 @@
     <param name="max_ang"  value="2.356194490125"/>  
     <param name="frame_id"  value="vertical_left_laser_link"/>  
   </node>
-  
- 
 
 <!--  <node pkg="xsens_node" type="xsens_node" name="xsens_node" >
    <param name="frame_id"  value="imu_link"/>  
   </node>-->
 
   <node pkg="rosbag" type="record" name="record" 
-  output="screen" args="-o $(env ROS_DATA_DIR)/origin  /imu /horizontal_laser_2d /vertical_right_laser_2d /vertical_left_laser_2d"/> 
+  output="screen" 
+  args="-o $(env ROS_DATA_DIR)/lidar_slam/ /imu /horizontal_laser_2d /vertical_right_laser_2d /vertical_left_laser_2d"/>
   
-<!--    <node pkg="rosbag" type="record" name="record" 
-  output="screen" args="-o /home/whu/data/whuplat/lidar2IMU /imu /horizontal_laser_2d /vertical_left_laser_2d"/> -->
-
- 
-
 </launch>
 
 
