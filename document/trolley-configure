@@ -1,0 +1,3 @@
+/etc/udev/rules.d/90-SLAM-trolley-sensors.rules
+/etc/ld.so.conf.d/ros.conf
+/etc/profile.d/

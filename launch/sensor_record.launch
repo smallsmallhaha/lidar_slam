@@ -14,42 +14,38 @@
   limitations under the License.
 -->
 
-<launch>  
+<launch>
 
   <param name="/use_sim_time" value="false" />
-    
-  <node name="hokuyo0" pkg="hokuyo_node" type="hokuyo_node" > 
-   <remap from="scan" to="horizontal_laser_2d" />
-    <param name="port" type="string" value="/dev/ttyACM1"/>  
-    <param name="min_ang"  value="-2.356194490125"/>  
-    <param name="max_ang"  value="2.356194490125"/>  
-    <param name="frame_id"  value="horizontal_laser_link"/>
-  </node>
-  
-  <node name="hokuyo1" pkg="hokuyo_node" type="hokuyo_node" > 
-   <remap from="scan" to="vertical_right_laser_2d" />
-    <param name="port" type="string" value="/dev/ttyACM0"/>  
-    <param name="min_ang"  value="-2.356194490125"/>  
-    <param name="max_ang"  value="2.356194490125"/>  
-    <param name="frame_id"  value="vertical_right_laser_link"/>  
-  </node>
-  
-  <node name="hokuyo2" pkg="hokuyo_node" type="hokuyo_node" > 
-    <remap from="scan" to="vertical_left_laser_2d" />
-    <param name="port" type="string" value="/dev/ttyACM2"/>  
-    <param name="min_ang"  value="-2.356194490125"/>  
-    <param name="max_ang"  value="2.356194490125"/>  
-    <param name="frame_id"  value="vertical_left_laser_link"/>  
+
+  <node name="hokuyo0" pkg="hokuyo_node" type="hokuyo_node">
+    <remap from="scan" to="horizontal_laser_2d" />
+    <param name="port" type="string" value="/dev/trolley_sensors/hokuyo_H1526318"/>
+    <param name="min_ang" value="-2.356194490125"/>
+    <param name="max_ang" value="2.356194490125"/>
+    <param name="frame_id" value="horizontal_laser_link"/>
   </node>
 
-<!--  <node pkg="xsens_node" type="xsens_node" name="xsens_node" >
-   <param name="frame_id"  value="imu_link"/>  
+  <node name="hokuyo1" pkg="hokuyo_node" type="hokuyo_node">
+    <remap from="scan" to="vertical_right_laser_2d" />
+    <param name="port" type="string" value="/dev/trolley_sensors/hokuyo_H1526289"/>
+    <param name="min_ang" value="-2.356194490125"/>
+    <param name="max_ang" value="2.356194490125"/>
+    <param name="frame_id" value="vertical_right_laser_link"/>
+  </node>
+
+  <node name="hokuyo2" pkg="hokuyo_node" type="hokuyo_node">
+    <remap from="scan" to="vertical_left_laser_2d" />
+    <param name="port" type="string" value="/dev/trolley_sensors/hokuyo_H1526305"/>
+    <param name="min_ang" value="-2.356194490125"/>
+    <param name="max_ang" value="2.356194490125"/>
+    <param name="frame_id" value="vertical_left_laser_link"/>
+  </node>
+
+  <!--  <node pkg="xsens_node" type="xsens_node" name="xsens_node">
+   <param name="frame_id" value="imu_link"/>  
   </node>-->
 
-  <node pkg="rosbag" type="record" name="record" 
-  output="screen" 
-  args="--bz2 -o $(env ROS_DATA_DIR)/lidar_slam/ /imu /horizontal_laser_2d /vertical_right_laser_2d /vertical_left_laser_2d"/>
-  
+  <node name="record" pkg="rosbag" type="record" output="screen" args="--bz2 -o $(env ROS_DATA_DIR)/lidar_slam/ /imu /horizontal_laser_2d /vertical_right_laser_2d /vertical_left_laser_2d"/>
+
 </launch>
-
-
