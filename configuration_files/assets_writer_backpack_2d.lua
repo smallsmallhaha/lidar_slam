@@ -19,29 +19,15 @@
 -- of a pixel in a X-Ray.
 VOXEL_SIZE = 5e-2
 
-XY_TRANSFORM =  {
-  translation = { 0., 0., 0. },
-  rotation = { 0., -math.pi / 2., 0., },
-}
-
-XZ_TRANSFORM =  {
-  translation = { 0., 0., 0. },
-  rotation = { 0. , 0., -math.pi / 2, },
-}
-
-YZ_TRANSFORM =  {
-  translation = { 0., 0., 0. },
-  rotation = { 0. , 0., math.pi, },
-}
+include "transform.lua"
 
 options = {
   tracking_frame = "base_link",
-  excluding_frame = "horizontal_laser_link",
   pipeline = {
     {
       action = "min_max_range_filter",
-      min_range = 0.3,
-      max_range = 30.,
+      min_range = 1.,
+      max_range = 60.,
     },
     {
       action = "dump_num_points",
@@ -117,14 +103,8 @@ options = {
     },
     {
       action = "color_points",
-      frame_id = "vertical_left_laser_link",
-      color = { 100., 100., 100. },
-    },
-    
-    {
-      action = "color_points",
-      frame_id = "vertical_right_laser_link",
-      color = { 255., 255., 255. },
+      frame_id = "vertical_laser_link",
+      color = { 0., 255., 0. },
     },
 
     {

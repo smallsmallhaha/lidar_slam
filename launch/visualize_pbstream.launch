@@ -1,5 +1,5 @@
 <!--
-  Copyright 2016 The Cartographer Authors
+  Copyright 2018 The Cartographer Authors
 
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.
@@ -15,22 +15,15 @@
 -->
 
 <launch>
-  <param name="/use_sim_time" value="true" />
-
   <node name="rviz" pkg="rviz" type="rviz" required="true"
-      args="-d $(find cartographer_ros)/configuration_files/demo_3d.rviz" />
-
+      args="-d $(find cartographer_ros)/configuration_files/demo_2d.rviz" />
   <node name="cartographer_offline_node" pkg="cartographer_ros"
       type="cartographer_offline_node" args="
-          -configuration_directory $(find cartographer_ros)/configuration_files
-          -configuration_basename backpack_3d.lua
-          -urdf_filename $(find cartographer_ros)/urdf/backpack_3d.urdf
-          -bag_filenames $(arg bag_filenames)"
+          -configuration_directory $(find lidar_slam)/configuration_files
+          -configuration_basenames visualize_pbstream.lua
+          -keep_running=true
+          -load_state_filename $(arg pbstream_filename)
+          -load_frozen_state=false"
       output="screen">
-    <remap from="points2_1" to="horizontal_laser_3d" />
-    <remap from="points2_2" to="vertical_laser_3d" />
   </node>
-
-  <node name="cartographer_occupancy_grid_node" pkg="cartographer_ros"
-      type="cartographer_occupancy_grid_node" args="-resolution 0.05" />
 </launch>
