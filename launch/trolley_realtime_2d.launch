@@ -16,10 +16,40 @@
 
 <launch>
 
-  <param name="/use_sim_time" value="false" /> 
-  
-  <include file="$(find lidar_slam)/launch/trolley_data_record.launch" />
+  <param name="/use_sim_time" value="false" />
 
+  <!-- driver -->
+  <node name="hokuyo0" pkg="hokuyo_node" type="hokuyo_node">
+    <remap from="scan" to="horizontal_laser_2d" />
+    <param name="port" type="string" value="/dev/trolley_sensors/hokuyo_H1526318"/>
+    <param name="min_ang" value="-2.356194490125"/>
+    <param name="max_ang" value="2.356194490125"/>
+    <param name="frame_id" value="horizontal_laser_link"/>
+  </node>
+
+  <node name="hokuyo1" pkg="hokuyo_node" type="hokuyo_node">
+    <remap from="scan" to="vertical_right_laser_2d" />
+    <param name="port" type="string" value="/dev/trolley_sensors/hokuyo_H1526289"/>
+    <param name="min_ang" value="-2.356194490125"/>
+    <param name="max_ang" value="2.356194490125"/>
+    <param name="frame_id" value="vertical_right_laser_link"/>
+  </node>
+
+  <node name="hokuyo2" pkg="hokuyo_node" type="hokuyo_node">
+    <remap from="scan" to="vertical_left_laser_2d" />
+    <param name="port" type="string" value="/dev/trolley_sensors/hokuyo_H1526305"/>
+    <param name="min_ang" value="-2.356194490125"/>
+    <param name="max_ang" value="2.356194490125"/>
+    <param name="frame_id" value="vertical_left_laser_link"/>
+  </node>
+  
+  <node pkg="xsens_node" type="xsens_node" name="xsens_node">
+    <param name="port" type="string" value="/dev/trolley_sensors/imu"/>
+    <param name="imu_frame_id" type="string" value="imu_link"/>
+    <param name="imu_frequency" type="int" value="100"/>
+  </node>
+
+  <!-- SLAM -->
   <param name="robot_description"
     textfile="$(find lidar_slam)/urdf/trolley_2d.urdf" />
 

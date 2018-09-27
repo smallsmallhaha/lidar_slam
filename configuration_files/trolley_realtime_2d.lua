@@ -43,8 +43,7 @@ options = {
 }
 
 MAP_BUILDER.use_trajectory_builder_2d = true
--- turn off imu
-TRAJECTORY_BUILDER_2D.use_imu_data = false
+TRAJECTORY_BUILDER_2D.use_imu_data = true
 TRAJECTORY_BUILDER_2D.num_accumulated_range_data = 1
 -- turn off csm
 TRAJECTORY_BUILDER_2D.use_online_correlative_scan_matching = false

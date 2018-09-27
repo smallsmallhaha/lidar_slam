@@ -23,6 +23,8 @@ include "transform.lua"
 
 options = {
   tracking_frame = "base_link",
+  -- multiple frames can be seperated by blank
+  mapping_frame = "vertical_left_laser_link vertical_right_laser_link",
   pipeline = {
     {
       action = "min_max_range_filter",
@@ -103,8 +105,13 @@ options = {
     },
     {
       action = "color_points",
-      frame_id = "vertical_laser_link",
+      frame_id = "vertical_left_laser_link",
       color = { 0., 255., 0. },
+    },
+    {
+      action = "color_points",
+      frame_id = "vertical_right_laser_link",
+      color = { 0., 0., 255. },
     },
 
     {

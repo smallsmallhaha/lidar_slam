@@ -15,14 +15,15 @@
 -->
 
 <launch>
-  <arg name="config_file" default="assets_writer_backpack_2d.lua"/>
-  <node name="cartographer_assets_writer" pkg="cartographer_ros" required="true"
-      type="cartographer_assets_writer" args="
-          -configuration_directory $(find lidar_slam)/configuration_files
-          -configuration_basename $(arg config_file)
-          -urdf_filename $(find lidar_slam)/urdf/trolley_2d.urdf
-          -bag_filenames $(arg bag_filenames)
-          -pose_graph_filename $(arg pose_graph_filename)"
-      output="screen">
-  </node>
+  <param name="robot_description"
+    textfile="$(arg urdf_filename)" />
+
+  <node name="robot_state_publisher" pkg="robot_state_publisher"
+    type="robot_state_publisher" />
+
+  <param name="/use_sim_time" value="true" />
+
+  <node name="playbag" pkg="rosbag" type="play" output="screen"
+      args="--clock $(arg bag_filename) -r 0.1" />
+
 </launch>

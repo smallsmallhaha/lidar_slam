@@ -42,6 +42,6 @@
     <param name="frame_id" value="vertical_left_laser_link"/>
   </node>
 
-  <node name="record" pkg="rosbag" type="record" output="screen" args="--bz2 -o $(env ROS_DATA_DIR)/lidar_slam/ /imu /horizontal_laser_2d /vertical_right_laser_2d /vertical_left_laser_2d"/>
+  <node name="record" pkg="rosbag" type="record" output="screen" args="--lz4 -o /opt/AlphaStar/data/ /imu /horizontal_laser_2d /vertical_right_laser_2d /vertical_left_laser_2d"/>
 
 </launch>
